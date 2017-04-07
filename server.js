@@ -10,22 +10,13 @@ var googleKey = process.env.GOOGLE_CIVIC_INFO || require('./config.js').apiKeys.
 app.set('port', process.env.NODE_PORT || process.env.PORT || 3000);
 app.set('host', process.env.NODE_IP || 'localhost');
 
-console.log("starting up");
-console.log(process.env.GOOGLE_CIVIC_INFO, process.env.MONGODB_URI);
-
-try {
-	mongoose.connect(process.env.MONGODB_URI || require('./config.js').database.localUrl);
-} catch (e) {
-	console.log("mongoose connect failed", e);
-}
-
-app.use(morgan('dev')); // logs all requests to console
+console.log(app.get('port'), app.get('host'));
+mongoose.connect(process.env.MONGODB_URI || require('./config.js').database.localUrl);
+app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('./public'));
-app.use(express.static('/Users/Jaime/Desktop/brendan_codes/contact_congress'));
-
-
+// app.use(express.static('/Users/Jaime/Desktop/brendan_codes/contact_congress'));
 
 var repList = mongoose.model('Replist', {
 	text: { type: String, default: '' },
