@@ -1,14 +1,9 @@
 {
-  "name": "localreps",
-  "version": "1.0.0",
-  "description": "get local reps",
+  "name": "contactingCongress",
+  "version": "1.0.1",
+  "description": "Server for site",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
   "author": "brendan",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.15.2",
     "request": "^2.80.0",

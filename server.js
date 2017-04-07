@@ -8,7 +8,14 @@ var config = require('./config.js');
 var app = express();
 var googleKey = process.env.GOOGLE_CIVIC_INFO || config.apiKeys.googleCivicInfo;
 
-mongoose.connect(process.env.MONGODB_URI || config.database.localUrl);
+console.log("starting up");
+console.log(process.env.GOOGLE_CIVIC_INFO, process.env.MONGODB_URI);
+
+try {
+	mongoose.connect(process.env.MONGODB_URI || config.database.localUrl);
+} catch (e) {
+	console.log("mongoose connect failed", e);
+}
 
 app.use(morgan('dev')); // logs all requests to console
 app.use(bodyParser.urlencoded({ extended: false }));
