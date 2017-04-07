@@ -1,0 +1,5 @@
+/node_modules
+/public
+/notes
+config.js
+.DS_Store
