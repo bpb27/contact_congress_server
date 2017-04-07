@@ -7,10 +7,6 @@ var methodOverride = require('method-override');
 var app = express();
 var googleKey = process.env.GOOGLE_CIVIC_INFO || require('./config.js').apiKeys.googleCivicInfo;
 
-app.set('port', process.env.NODE_PORT || process.env.PORT || 3000);
-app.set('host', process.env.NODE_IP || 'localhost');
-
-console.log(app.get('port'), app.get('host'));
 mongoose.connect(process.env.MONGODB_URI || require('./config.js').database.localUrl);
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -86,6 +82,4 @@ app.get('*', function (req, res) {
 	res.redirect('/');
 });
 
-app.listen(app.get('port'), app.get('host'), function () {
-	console.log('Express server listening on port ' + app.get('port'));
-});
+app.listen(process.env.PORT || 3000);
