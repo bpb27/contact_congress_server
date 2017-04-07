@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGODB_URI || config.database.localUrl);
 app.use(morgan('dev')); // logs all requests to console
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.use(express.static('./public'));
+app.use(express.static('./public'));
 // app.use(express.static('/Users/Jaime/Desktop/brendan_codes/contact_congress'));
 
 app.set('port', process.env.NODE_PORT || process.env.PORT || 3000);
