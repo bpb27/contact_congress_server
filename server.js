@@ -83,6 +83,10 @@ app.get("/localRep/:address", function (req, res) {
 	remote.pipe(res);
 });
 
+app.get('*', function (req, res) {
+	res.redirect('/');
+});
+
 app.listen(app.get('port'), app.get('host'), function () {
 	console.log('Express server listening on port ' + app.get('port'));
 });
